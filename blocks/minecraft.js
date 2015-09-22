@@ -16,9 +16,9 @@ Blockly.Blocks['minecraft_set_block'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(230);
+    this.setColour(164);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
 

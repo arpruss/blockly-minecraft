@@ -445,7 +445,7 @@ https://developers.google.com/blockly/hacking/closure""")
   search_paths = calcdeps.ExpandDirectories(
       ["core", os.path.join(os.path.pardir, "closure-library")])
 
-  preprocessFile('generators/javascript/minecraft-in.js','generators/javascript/minecraft.js')
+  preprocessFile('generators/javascript/source/minecraft-in.js','generators/javascript/minecraft.js')
 
   # Run both tasks in parallel threads.
   # Uncompressed is limited by processor speed.
