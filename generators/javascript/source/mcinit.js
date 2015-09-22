@@ -143,12 +143,25 @@ MCPI.drawLine = function(x1,y1,z1,x2,y2,z2) {
     }
 }
 
+MCPI.turtleYaw = function(angleDegrees) {
+    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.yawMatrix(angleDegrees));
+};
+
+MCPI.turtlePitch = function(angleDegrees) {
+    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.pitchMatrix(angleDegrees));
+};
+
+MCPI.turtleRoll = function(angleDegrees) {
+    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.rollMatrix(angleDegrees));
+};
+
 MCPI.turtleGo = function(distance) {
-    var heading = [MCPI.curMatrix[0][2],MCPI.curMatrix[1][2],MCPI.curMatrix[2][2]]
-    var newX = MCPI.curX + MCPI.curMatrix[0][2] * distance;
-    var newY = MCPI.curY + MCPI.curMatrix[1][2] * distance;
-    var newZ = MCPI.curZ + MCPI.curMatrix[2][2] * distance;
-    MCPI.drawLine(MCPI.curX,MCPI.curY,MCPI.curZ,newX,newY,newZ);
+    var heading = [MCPI.matrix[0][2],MCPI.matrix[1][2],MCPI.matrix[2][2]]
+    var newX = MCPI.curX + MCPI.matrix[0][2] * distance;
+    var newY = MCPI.curY + MCPI.matrix[1][2] * distance;
+    var newZ = MCPI.curZ + MCPI.matrix[2][2] * distance;
+    if (MCPI.penDown)
+        MCPI.drawLine(MCPI.curX,MCPI.curY,MCPI.curZ,newX,newY,newZ);
     MCPI.curX = newX;
     MCPI.curY = newY;
     MCPI.curZ = newZ;
@@ -171,6 +184,5 @@ MCPI.socket.onopen = function(event) {
 
       MCPI.socket.onmessage = function(event) {
       var pitch = parseFloat(event.data.trim());
-      MCPI.curMatrix = MCPI.mmMultiply(MCPI.yawMatrix(yaw), MCPI.pitchMatrix(-pitch));
+      MCPI.matrix = MCPI.mmMultiply(MCPI.yawMatrix(yaw), MCPI.pitchMatrix(-pitch));
 
-      MCPI.turtleGo(20);

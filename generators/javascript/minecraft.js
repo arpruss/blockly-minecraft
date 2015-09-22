@@ -144,12 +144,25 @@ Blockly.JavaScript.minecraft = function() {
 "    }\n"+
 "}\n"+
 "\n"+
+"MCPI.turtleYaw = function(angleDegrees) {\n"+
+"    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.yawMatrix(angleDegrees));\n"+
+"};\n"+
+"\n"+
+"MCPI.turtlePitch = function(angleDegrees) {\n"+
+"    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.pitchMatrix(angleDegrees));\n"+
+"};\n"+
+"\n"+
+"MCPI.turtleRoll = function(angleDegrees) {\n"+
+"    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.rollMatrix(angleDegrees));\n"+
+"};\n"+
+"\n"+
 "MCPI.turtleGo = function(distance) {\n"+
-"    var heading = [MCPI.curMatrix[0][2],MCPI.curMatrix[1][2],MCPI.curMatrix[2][2]]\n"+
-"    var newX = MCPI.curX + MCPI.curMatrix[0][2] * distance;\n"+
-"    var newY = MCPI.curY + MCPI.curMatrix[1][2] * distance;\n"+
-"    var newZ = MCPI.curZ + MCPI.curMatrix[2][2] * distance;\n"+
-"    MCPI.drawLine(MCPI.curX,MCPI.curY,MCPI.curZ,newX,newY,newZ);\n"+
+"    var heading = [MCPI.matrix[0][2],MCPI.matrix[1][2],MCPI.matrix[2][2]]\n"+
+"    var newX = MCPI.curX + MCPI.matrix[0][2] * distance;\n"+
+"    var newY = MCPI.curY + MCPI.matrix[1][2] * distance;\n"+
+"    var newZ = MCPI.curZ + MCPI.matrix[2][2] * distance;\n"+
+"    if (MCPI.penDown)\n"+
+"        MCPI.drawLine(MCPI.curX,MCPI.curY,MCPI.curZ,newX,newY,newZ);\n"+
 "    MCPI.curX = newX;\n"+
 "    MCPI.curY = newY;\n"+
 "    MCPI.curZ = newZ;\n"+
@@ -172,9 +185,8 @@ Blockly.JavaScript.minecraft = function() {
 "\n"+
 "      MCPI.socket.onmessage = function(event) {\n"+
 "      var pitch = parseFloat(event.data.trim());\n"+
-"      MCPI.curMatrix = MCPI.mmMultiply(MCPI.yawMatrix(yaw), MCPI.pitchMatrix(-pitch));\n"+
-"\n"+
-"      MCPI.turtleGo(20);\n";
+"      MCPI.matrix = MCPI.mmMultiply(MCPI.yawMatrix(yaw), MCPI.pitchMatrix(-pitch));\n"+
+"\n";
   Blockly.JavaScript.cleanups_['minecraft'] = "MCPI.socket.close();\n"+
 "}; // end MCPI.socket.onmessage for player.getRotation()\n"+
 "MCPI.socket.send(\"player.getPitch()\");\n"+
@@ -199,6 +211,7 @@ Blockly.JavaScript['minecraft_set_block'] = function(block) {
 };
 
 Blockly.JavaScript['minecraft_turtle_go'] = function(block) {
+  Blockly.JavaScript.minecraft();
   var value_distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = 'MCPI.turtleGo('+value_distance+');\n';
@@ -206,6 +219,7 @@ Blockly.JavaScript['minecraft_turtle_go'] = function(block) {
 };
 
 Blockly.JavaScript['minecraft_turtle_yaw'] = function(block) {
+  Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
   var angle_angle = block.getFieldValue('ANGLE');
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
@@ -214,6 +228,7 @@ Blockly.JavaScript['minecraft_turtle_yaw'] = function(block) {
 };
 
 Blockly.JavaScript['minecraft_turtle_pitch'] = function(block) {
+  Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
   var angle_angle = block.getFieldValue('ANGLE');
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
@@ -222,6 +237,7 @@ Blockly.JavaScript['minecraft_turtle_pitch'] = function(block) {
 };
 
 Blockly.JavaScript['minecraft_turtle_roll'] = function(block) {
+  Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
   var angle_angle = block.getFieldValue('ANGLE');
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
