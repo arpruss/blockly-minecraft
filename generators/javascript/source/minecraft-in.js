@@ -1,7 +1,7 @@
 Blockly.JavaScript.minecraft = function() {
   Blockly.JavaScript.definitions_['minecraft'] = '[[[file:mcinit.js]]]';
   Blockly.JavaScript.cleanups_['minecraft'] = '[[[file:mccleanup.js]]]';
-}
+};
 
 
 Blockly.JavaScript['minecraft_set_block'] = function(block) {
