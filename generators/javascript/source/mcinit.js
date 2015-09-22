@@ -2,12 +2,13 @@
 
 var MCPI = Object.create(null);
 
-MCPI.identityMatrix = [[1,0,0],[0,1,0],[0,0,1]];
 MCPI.TO_RADIANS = Math.PI / 180;
 MCPI.block = "1";
+MCPI.penDown = true;
+MCPI.nib = [[0,0,0]];
 
 MCPI.mmMultiply = function(a,b) {
-    c = MCPI.identityMatrix;
+    var c = [[0,0,0],[0,0,0],[0,0,0]];
     for (var i = 0; i < 3 ; i++) for (var j = 0; j < 3 ; j++)
       c[i][j] = a[i][0]*b[0][j] + a[i][1]*b[1][j] + a[i][2]*b[2][j];
     return c;
@@ -133,30 +134,83 @@ MCPI.getLine = function(x1,y1,z1,x2,y2,z2) {
 };
 
 MCPI.setBlock = function(x,y,z,block) {
+  if (block != "0" && Math.floor(x) == Math.floor(MCPI.playerX) && Math.floor(z) == Math.floor(MCPI.playerZ)
+      && (Math.floor(y) >= MCPI.playerShiftedHeight) ) {
+        MCPI.playerShiftedHeight = Math.floor(y) + 1;
+        MCPI.socket.send("player.setPos("+MCPI.playerX+","+MCPI.playerShiftedHeight+","+MCPI.playerZ+")");
+  }
   MCPI.socket.send("world.setBlock("+x+","+y+","+z+","+block+")");
 }
 
+MCPI.drawPoint = function(x0,y0,z0) {
+    var l = MCPI.nib.length;
+    if (l == 0) {
+        return;
+    }
+    else if (l == 1) {
+        MCPI.setBlock(x0,y0,z0,MCPI.block);
+        return;
+    }
+
+    for (i = 0 ; i < l ; i++) {
+        var p = MCPI.nib[i];
+        var x = p[0] + x0;
+        var y = p[1] + y0;
+        var z = p[2] + z0;
+        var indexable = ""+x+","+y+","+z;
+        if (! (indexable in MCPI.saved)) {
+            MCPI.setBlock(x,y,z,MCPI.block);
+            MCPI.saved[indexable] = 1;
+        }
+    }
+}
+
 MCPI.drawLine = function(x1,y1,z1,x2,y2,z2) {
-    l = MCPI.getLine(x1,y1,z1,x2,y2,z2);
+    MCPI.saved = Object.create(null);
+    var l = MCPI.getLine(x1,y1,z1,x2,y2,z2);
     for (var i=0; i<l.length ; i++) {
-        MCPI.setBlock(l[i][0],l[i][1],l[i][2],MCPI.block);
+        MCPI.drawPoint(l[i][0],l[i][1],l[i][2]);
+    }
+}
+
+MCPI.turtleSetWidth = function(w) {
+    MCPI.nib = [];
+    if (w == 0) {
+        return;
+    }
+    else if (w == 1) {
+        MCPI.nib = [[0,0,0]];
+    }
+    else if (w == 2) {
+        for (x=-1; x<=0; x++)
+          for (y=0; y<=1; y++)
+            for (z=-1; z<=0; z++)
+              MCPI.nib.push([x,y,z]);
+    }
+    else {
+      var r = w/2;
+      var r2 = r*r;
+      for (var x = -Math.ceil(r) ; x <= Math.ceil(r); x++)
+        for (var y = -Math.ceil(r) ; y <= Math.ceil(r); y++)
+          for (var z = -Math.ceil(r) ; z <= Math.ceil(r); z++)
+            if (x*x + y*y + z*z <= r2)
+               MCPI.nib.push([x,y,z]);
     }
 }
 
 MCPI.turtleYaw = function(angleDegrees) {
-    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.yawMatrix(angleDegrees));
+    MCPI.matrix = MCPI.mmMultiply(MCPI.matrix, MCPI.yawMatrix(angleDegrees));
 };
 
 MCPI.turtlePitch = function(angleDegrees) {
-    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.pitchMatrix(angleDegrees));
+    MCPI.matrix = MCPI.mmMultiply(MCPI.matrix, MCPI.pitchMatrix(angleDegrees));
 };
 
 MCPI.turtleRoll = function(angleDegrees) {
-    MCPI.matrix = mmMultiply(MCPI.matrix, MCPI.rollMatrix(angleDegrees));
+    MCPI.matrix = MCPI.mmMultiply(MCPI.matrix, MCPI.rollMatrix(angleDegrees));
 };
 
 MCPI.turtleGo = function(distance) {
-    var heading = [MCPI.matrix[0][2],MCPI.matrix[1][2],MCPI.matrix[2][2]]
     var newX = MCPI.curX + MCPI.matrix[0][2] * distance;
     var newY = MCPI.curY + MCPI.matrix[1][2] * distance;
     var newZ = MCPI.curZ + MCPI.matrix[2][2] * distance;
@@ -175,14 +229,12 @@ MCPI.socket.onopen = function(event) {
     MCPI.playerX = parseFloat(args[0]);
     MCPI.playerY = parseFloat(args[1]);
     MCPI.playerZ = parseFloat(args[2]);
-    MCPI.curX = MCPI.playerX
-    MCPI.curY = MCPI.playerY
-    MCPI.curZ = MCPI.playerZ
+    MCPI.curX = MCPI.playerX;
+    MCPI.curY = MCPI.playerY;
+    MCPI.curZ = MCPI.playerZ;
+    MCPI.playerShiftedHeight = Math.floor(MCPI.playerY);
 
     MCPI.socket.onmessage = function(event) {
       var yaw = parseFloat(event.data.trim());
-
-      MCPI.socket.onmessage = function(event) {
-      var pitch = parseFloat(event.data.trim());
-      MCPI.matrix = MCPI.mmMultiply(MCPI.yawMatrix(yaw), MCPI.pitchMatrix(-pitch));
+      MCPI.matrix = MCPI.yawMatrix(yaw);
 

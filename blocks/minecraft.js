@@ -26,9 +26,8 @@ Blockly.Blocks['minecraft_turtle_go'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Turtle forward");
-    this.appendValueInput("DISTANCE")
-        .setCheck("Number")
-        .appendField("");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput("0", Blockly.FieldTextInput.nonnegativeIntegerValidator), "DISTANCE");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -47,6 +46,8 @@ Blockly.Blocks['minecraft_turtle_yaw'] = {
     this.appendDummyInput("NAME")
         .appendField(new Blockly.FieldAngle("90"), "ANGLE");
     this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setColour(164);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
@@ -62,6 +63,8 @@ Blockly.Blocks['minecraft_turtle_pitch'] = {
     this.appendDummyInput("NAME")
         .appendField(new Blockly.FieldAngle("90"), "ANGLE");
     this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setColour(164);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
@@ -77,6 +80,51 @@ Blockly.Blocks['minecraft_turtle_roll'] = {
     this.appendDummyInput("NAME")
         .appendField(new Blockly.FieldAngle("90"), "ANGLE");
     this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(164);
+    this.setTooltip('');
+    this.setHelpUrl('github.com/arpruss/raspberryjammod');
+  }
+};
+
+Blockly.Blocks['minecraft_turtle_set_pen'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Set pen width to");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput("1", Blockly.FieldTextInput.nonnegativeIntegerValidator), "WIDTH");
+    this.appendDummyInput()
+        .appendField("and block to");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["air", "0"], ["stone", "1"], ["grass", "2"]]), "BLOCK");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(164);
+    this.setTooltip('');
+    this.setHelpUrl('github.com/arpruss/raspberryjammod');
+  }
+};
+
+Blockly.Blocks['minecraft_turtle_pen_up'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Turtle pen up");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(164);
+    this.setTooltip('');
+    this.setHelpUrl('github.com/arpruss/raspberryjammod');
+  }
+};
+
+Blockly.Blocks['minecraft_turtle_pen_down'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Turtle pen down");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setColour(164);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
