@@ -1,0 +1,50 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="controls_for" x="37" y="88">
+    <field name="VAR">i</field>
+    <value name="FROM">
+      <block type="math_number">
+        <field name="NUM">1</field>
+      </block>
+    </value>
+    <value name="TO">
+      <block type="math_number">
+        <field name="NUM">10</field>
+      </block>
+    </value>
+    <value name="BY">
+      <block type="math_number">
+        <field name="NUM">1</field>
+      </block>
+    </value>
+    <statement name="DO">
+      <block type="minecraft_set_block">
+        <field name="block">1</field>
+        <value name="x">
+          <block type="math_arithmetic">
+            <field name="OP">MULTIPLY</field>
+            <value name="A">
+              <block type="variables_get">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="y">
+          <block type="variables_get">
+            <field name="VAR">i</field>
+          </block>
+        </value>
+        <value name="z">
+          <block type="variables_get">
+            <field name="VAR">i</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>
