@@ -3,7 +3,7 @@ Blockly.Blocks['minecraft_set_block'] = {
     this.appendDummyInput()
         .appendField("Put");
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["air", "0"], ["stone", "1"], ["grass", "2"]]), "block");
+        .appendField(new Blockly.FieldDropdown([["air", "0"], ["stone", "1"], ["grass", "2"]]), "BLOCK");
     this.appendValueInput("x")
         .setCheck("Number")
         .appendField("at");
@@ -24,10 +24,9 @@ Blockly.Blocks['minecraft_set_block'] = {
 
 Blockly.Blocks['minecraft_turtle_go'] = {
   init: function() {
-    this.appendDummyInput()
+    this.appendValueInput("DISTANCE")
+        .setCheck("Number")
         .appendField("Turtle forward");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldTextInput("0", Blockly.FieldTextInput.nonnegativeIntegerValidator), "DISTANCE");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -43,8 +42,11 @@ Blockly.Blocks['minecraft_turtle_yaw'] = {
         .appendField("Turtle turn");
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["left \u27F2", "-1"], ["right \u27F3", "1"]]), "DIRECTION");
-    this.appendDummyInput("NAME")
-        .appendField(new Blockly.FieldAngle("90"), "ANGLE");
+    this.appendValueInput("ANGLE")
+        .setCheck("Number")
+        .appendField("by");
+    this.appendDummyInput()
+        .appendField("\u00B0");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -60,8 +62,11 @@ Blockly.Blocks['minecraft_turtle_pitch'] = {
         .appendField("Turtle pitch");
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["down", "-1"], ["up", "1"]]), "DIRECTION");
-    this.appendDummyInput("NAME")
-        .appendField(new Blockly.FieldAngle("90"), "ANGLE");
+    this.appendValueInput("ANGLE")
+        .setCheck("Number")
+        .appendField("by");
+    this.appendDummyInput()
+        .appendField("\u00B0");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -77,8 +82,11 @@ Blockly.Blocks['minecraft_turtle_roll'] = {
         .appendField("Turtle roll");
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["left \u27F2", "-1"], ["right \u27F3", "1"]]), "DIRECTION");
-    this.appendDummyInput("NAME")
-        .appendField(new Blockly.FieldAngle("90"), "ANGLE");
+    this.appendValueInput("ANGLE")
+        .setCheck("Number")
+        .appendField("by");
+    this.appendDummyInput()
+        .appendField("\u00B0");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -90,10 +98,9 @@ Blockly.Blocks['minecraft_turtle_roll'] = {
 
 Blockly.Blocks['minecraft_turtle_set_pen'] = {
   init: function() {
-    this.appendDummyInput()
+    this.appendValueInput("WIDTH")
+        .setCheck("Number")
         .appendField("Set pen width to");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldTextInput("1", Blockly.FieldTextInput.nonnegativeIntegerValidator), "WIDTH");
     this.appendDummyInput()
         .appendField("and block to");
     this.appendDummyInput()
@@ -107,10 +114,13 @@ Blockly.Blocks['minecraft_turtle_set_pen'] = {
   }
 };
 
-Blockly.Blocks['minecraft_turtle_pen_up'] = {
+Blockly.Blocks['minecraft_turtle_pen'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Turtle pen up");
+        .appendField("Turtle pen");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["up", "0"], ["down", "1"]]), "MODE");
+    this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(164);
@@ -119,14 +129,3 @@ Blockly.Blocks['minecraft_turtle_pen_up'] = {
   }
 };
 
-Blockly.Blocks['minecraft_turtle_pen_down'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Turtle pen down");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setColour(164);
-    this.setTooltip('');
-    this.setHelpUrl('github.com/arpruss/raspberryjammod');
-  }
-};

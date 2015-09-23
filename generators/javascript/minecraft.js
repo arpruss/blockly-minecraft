@@ -189,13 +189,14 @@ Blockly.JavaScript.minecraft = function() {
 "              MCPI.nib.push([x,y,z]);\n"+
 "    }\n"+
 "    else {\n"+
-"      var r2 = w*w/4;\n"+
-"      for (var x = -Math.ceil(w) ; x <= Math.ceil(w); x++)\n"+
-"        for (var y = -Math.ceil(w) ; y <= Math.ceil(w); y++)\n"+
-"          for (var z = -Math.ceil(w) ; z <= Math.ceil(w); z++)\n"+
-"            if (x*x + y*y + z*z < r2)\n"+
-"               MCPI.nib.push([x,y,z,]);\n"+
-"    }           \n"+
+"      var r = w/2;\n"+
+"      var r2 = r*r;\n"+
+"      for (var x = -Math.ceil(r) ; x <= Math.ceil(r); x++)\n"+
+"        for (var y = -Math.ceil(r) ; y <= Math.ceil(r); y++)\n"+
+"          for (var z = -Math.ceil(r) ; z <= Math.ceil(r); z++)\n"+
+"            if (x*x + y*y + z*z <= r2)\n"+
+"               MCPI.nib.push([x,y,z]);\n"+
+"    }\n"+
 "}\n"+
 "\n"+
 "MCPI.turtleYaw = function(angleDegrees) {\n"+
@@ -249,7 +250,7 @@ Blockly.JavaScript.minecraft = function() {
 Blockly.JavaScript['minecraft_set_block'] = function(block) {
   Blockly.JavaScript.minecraft();
 
-  var dropdown_block = block.getFieldValue('block');
+  var dropdown_block = block.getFieldValue('BLOCK');
   var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
   var value_z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
@@ -259,55 +260,47 @@ Blockly.JavaScript['minecraft_set_block'] = function(block) {
 
 Blockly.JavaScript['minecraft_turtle_go'] = function(block) {
   Blockly.JavaScript.minecraft();
-  var text_distance = parseFloat(block.getFieldValue('DISTANCE'));
-  var code = 'MCPI.turtleGo('+text_distance+');\n';
+  var value_distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'MCPI.turtleGo('+value_distance+');\n';
   return code;
 };
 
 Blockly.JavaScript['minecraft_turtle_yaw'] = function(block) {
   Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
-  var angle_angle = block.getFieldValue('ANGLE');
-  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'MCPI.turtleYaw('+angle_angle+'*'+dropdown_direction+');\n';
+  var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'MCPI.turtleYaw(('+value_angle+')*'+dropdown_direction+');\n';
   return code;
 };
 
 Blockly.JavaScript['minecraft_turtle_pitch'] = function(block) {
   Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
-  var angle_angle = block.getFieldValue('ANGLE');
-  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'MCPI.turtlePitch('+angle_angle+'*'+dropdown_direction+');\n';
+  var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'MCPI.turtlePitch(('+value_angle+')*'+dropdown_direction+');\n';
   return code;
 };
 
 Blockly.JavaScript['minecraft_turtle_roll'] = function(block) {
   Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
-  var angle_angle = block.getFieldValue('ANGLE');
-  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'MCPI.turtleRoll('+angle_angle+'*'+dropdown_direction+');\n';
+  var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'MCPI.turtleRoll(('+value_angle+')*'+dropdown_direction+');\n';
   return code;
 };
 
 Blockly.JavaScript['minecraft_turtle_set_pen'] = function(block) {
   Blockly.JavaScript.minecraft();
-  var text_width = parseFloat(block.getFieldValue('WIDTH'));
+  var value_width = Blockly.JavaScript.valueToCode(block, 'WIDTH', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_block = block.getFieldValue('BLOCK');
-  var code = 'MCPI.turtleSetWidth('+text_width+');\n'+
+  var code = 'MCPI.turtleSetWidth('+value_width+');\n'+
       'MCPI.block = "'+dropdown_block+'";\n';
   return code;
 };
 
-Blockly.JavaScript['minecraft_turtle_pen_up'] = function(block) {
+Blockly.JavaScript['minecraft_turtle_pen'] = function(block) {
   Blockly.JavaScript.minecraft();
-  var code = 'MCPI.penDown = false;\n';
-  return code;
-};
-
-Blockly.JavaScript['minecraft_turtle_pen_down'] = function(block) {
-  Blockly.JavaScript.minecraft();
-  var code = 'MCPI.penDown = false;\n';
+  var dropdown_mode = block.getFieldValue('MODE');
+  var code = 'MCPI.penDown = '+Boolean(parseInt(dropdown_mode))+';\n';
   return code;
 };
