@@ -133,6 +133,10 @@ MCPI.getLine = function(x1,y1,z1,x2,y2,z2) {
     return line;
 };
 
+MCPI.postToChat = function(message) {
+  MCPI.socket.send("chat.post("+message+")");
+};
+
 MCPI.setBlock = function(x,y,z,block) {
   if (block != "0" && Math.floor(x) == Math.floor(MCPI.playerX) && Math.floor(z) == Math.floor(MCPI.playerZ)
       && (Math.floor(y) >= MCPI.playerShiftedHeight) ) {
@@ -140,7 +144,7 @@ MCPI.setBlock = function(x,y,z,block) {
         MCPI.socket.send("player.setPos("+MCPI.playerX+","+MCPI.playerShiftedHeight+","+MCPI.playerZ+")");
   }
   MCPI.socket.send("world.setBlock("+x+","+y+","+z+","+block+")");
-}
+};
 
 MCPI.drawPoint = function(x0,y0,z0) {
     var l = MCPI.nib.length;

@@ -36,6 +36,20 @@ Blockly.Blocks['minecraft_turtle_go'] = {
   }
 };
 
+Blockly.Blocks['minecraft_post_to_chat'] = {
+  init: function() {
+    this.appendValueInput("MESSAGE")
+        .setCheck("String")
+        .appendField("Post to chat");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(164);
+    this.setTooltip('');
+    this.setHelpUrl('github.com/arpruss/raspberryjammod');
+  }
+};
+
 Blockly.Blocks['minecraft_turtle_yaw'] = {
   init: function() {
     this.appendDummyInput()

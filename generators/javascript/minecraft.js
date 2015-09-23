@@ -134,6 +134,10 @@ Blockly.JavaScript.minecraft = function() {
 "    return line;\n"+
 "};\n"+
 "\n"+
+"MCPI.postToChat = function(message) {\n"+
+"  MCPI.socket.send(\"chat.post(\"+message+\")\");\n"+
+"};\n"+
+"\n"+
 "MCPI.setBlock = function(x,y,z,block) {\n"+
 "  if (block != \"0\" && Math.floor(x) == Math.floor(MCPI.playerX) && Math.floor(z) == Math.floor(MCPI.playerZ)\n"+
 "      && (Math.floor(y) >= MCPI.playerShiftedHeight) ) {\n"+
@@ -141,7 +145,7 @@ Blockly.JavaScript.minecraft = function() {
 "        MCPI.socket.send(\"player.setPos(\"+MCPI.playerX+\",\"+MCPI.playerShiftedHeight+\",\"+MCPI.playerZ+\")\");\n"+
 "  }\n"+
 "  MCPI.socket.send(\"world.setBlock(\"+x+\",\"+y+\",\"+z+\",\"+block+\")\");\n"+
-"}\n"+
+"};\n"+
 "\n"+
 "MCPI.drawPoint = function(x0,y0,z0) {\n"+
 "    var l = MCPI.nib.length;\n"+
@@ -262,6 +266,13 @@ Blockly.JavaScript['minecraft_turtle_go'] = function(block) {
   Blockly.JavaScript.minecraft();
   var value_distance = Blockly.JavaScript.valueToCode(block, 'DISTANCE', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'MCPI.turtleGo('+value_distance+');\n';
+  return code;
+};
+
+Blockly.JavaScript['minecraft_post_to_chat'] = function(block) {
+  Blockly.JavaScript.minecraft();
+  var value_message = Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'MCPI.postToChat('+value_message+');\n';
   return code;
 };
 

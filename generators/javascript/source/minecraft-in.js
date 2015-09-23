@@ -21,6 +21,13 @@ Blockly.JavaScript['minecraft_turtle_go'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['minecraft_post_to_chat'] = function(block) {
+  Blockly.JavaScript.minecraft();
+  var value_message = Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'MCPI.postToChat('+value_message+');\n';
+  return code;
+};
+
 Blockly.JavaScript['minecraft_turtle_yaw'] = function(block) {
   Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
