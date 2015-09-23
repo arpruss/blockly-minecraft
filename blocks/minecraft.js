@@ -1,3 +1,4 @@
+Blockly.Blocks.MinecraftHue = 20;
 Blockly.Blocks.MinecraftBlocks = [
 ["air","0"],
 ["bed","26"],
@@ -172,7 +173,7 @@ Blockly.Blocks['minecraft_set_block'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
@@ -186,7 +187,7 @@ Blockly.Blocks['minecraft_turtle_go'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
@@ -200,7 +201,7 @@ Blockly.Blocks['minecraft_post_to_chat'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
@@ -220,7 +221,7 @@ Blockly.Blocks['minecraft_turtle_yaw'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
@@ -240,7 +241,7 @@ Blockly.Blocks['minecraft_turtle_pitch'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
@@ -260,7 +261,7 @@ Blockly.Blocks['minecraft_turtle_roll'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
@@ -278,7 +279,7 @@ Blockly.Blocks['minecraft_turtle_set_pen'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
@@ -293,7 +294,7 @@ Blockly.Blocks['minecraft_turtle_pen'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(164);
+    this.setColour(Blockly.Blocks.MinecraftHue);
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
