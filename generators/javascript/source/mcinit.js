@@ -156,7 +156,7 @@ MCPI.drawPoint = function(x0,y0,z0) {
         return;
     }
 
-    for (i = 0 ; i < l ; i++) {
+    for (var i = 0 ; i < l ; i++) {
         var p = MCPI.nib[i];
         var x = p[0] + x0;
         var y = p[1] + y0;

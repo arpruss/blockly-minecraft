@@ -157,7 +157,7 @@ Blockly.JavaScript.minecraft = function() {
 "        return;\n"+
 "    }\n"+
 "\n"+
-"    for (i = 0 ; i < l ; i++) {\n"+
+"    for (var i = 0 ; i < l ; i++) {\n"+
 "        var p = MCPI.nib[i];\n"+
 "        var x = p[0] + x0;\n"+
 "        var y = p[1] + y0;\n"+
