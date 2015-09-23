@@ -173,7 +173,7 @@ Blockly.Blocks['minecraft_set_block'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.MinecraftHue);
+    this.setColour(Blockly.Blocks.MinecraftHue) ;
     this.setTooltip('');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
