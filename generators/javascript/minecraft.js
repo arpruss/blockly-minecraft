@@ -15,21 +15,6 @@ Blockly.JavaScript.minecraft = function() {
 "    return c;\n"+
 "};\n"+
 "\n"+
-"MCPI.mvMultiply = function(a,b) {\n"+
-"    c = [0,0,0];\n"+
-"    for (var i = 0; i < 3 ; i++)\n"+
-"      c[i] = a[i][0]*b[0] + a[i][1]*b[1] + a[i][2]*b[2];\n"+
-"    return c;\n"+
-"};\n"+
-"\n"+
-"MCPI.vvAdd = function(a,b) {\n"+
-"    return [a[0]+b[0],a[1]+b[1],a[2]+b[2]];\n"+
-"};\n"+
-"\n"+
-"MCPI.vvSub = function(a,b) {\n"+
-"    return [a[0]-b[0],a[1]-b[1],a[2]-b[2]];\n"+
-"};\n"+
-"\n"+
 "MCPI.yawMatrix = function(angleDegrees) {\n"+
 "    var theta = angleDegrees * MCPI.TO_RADIANS;\n"+
 "    return [[Math.cos(theta), 0., -Math.sin(theta)],\n"+
@@ -228,6 +213,14 @@ Blockly.JavaScript.minecraft = function() {
 "\n"+
 "MCPI.socket = new WebSocket(\"ws://127.0.0.1:14711\");\n"+
 "\n"+
+"MCPI.timeoutFunction = function() {\n"+
+"   MCPI.socket.close();\n"+
+"   window.alert('Cannot connect to Minecraft API. Make sure you have Minecraft running with Raspberry Jam Mod.');\n"+
+"   exit();\n"+
+"};\n"+
+"\n"+
+"MCPI.timerID = setTimeout(MCPI.timeoutFunction, 5000);\n"+
+"\n"+
 "MCPI.socket.onopen = function(event) {\n"+
 "  MCPI.socket.onmessage = function(event) {\n"+
 "    var args = event.data.trim().split(\",\");\n"+
@@ -242,6 +235,8 @@ Blockly.JavaScript.minecraft = function() {
 "    MCPI.socket.onmessage = function(event) {\n"+
 "      var yaw = parseFloat(event.data.trim());\n"+
 "      MCPI.matrix = MCPI.yawMatrix(yaw);\n"+
+"      clearTimeout(MCPI.timerID);\n"+
+"\n"+
 "\n";
   Blockly.JavaScript.cleanups_['minecraft'] = "MCPI.socket.close();\n"+
 "}; // end MCPI.socket.onmessage for player.getRotation()\n"+

@@ -14,21 +14,6 @@ MCPI.mmMultiply = function(a,b) {
     return c;
 };
 
-MCPI.mvMultiply = function(a,b) {
-    c = [0,0,0];
-    for (var i = 0; i < 3 ; i++)
-      c[i] = a[i][0]*b[0] + a[i][1]*b[1] + a[i][2]*b[2];
-    return c;
-};
-
-MCPI.vvAdd = function(a,b) {
-    return [a[0]+b[0],a[1]+b[1],a[2]+b[2]];
-};
-
-MCPI.vvSub = function(a,b) {
-    return [a[0]-b[0],a[1]-b[1],a[2]-b[2]];
-};
-
 MCPI.yawMatrix = function(angleDegrees) {
     var theta = angleDegrees * MCPI.TO_RADIANS;
     return [[Math.cos(theta), 0., -Math.sin(theta)],
@@ -227,6 +212,14 @@ MCPI.turtleGo = function(distance) {
 
 MCPI.socket = new WebSocket("ws://127.0.0.1:14711");
 
+MCPI.timeoutFunction = function() {
+   MCPI.socket.close();
+   window.alert('Cannot connect to Minecraft API. Make sure you have Minecraft running with Raspberry Jam Mod.');
+   exit();
+};
+
+MCPI.timerID = setTimeout(MCPI.timeoutFunction, 5000);
+
 MCPI.socket.onopen = function(event) {
   MCPI.socket.onmessage = function(event) {
     var args = event.data.trim().split(",");
@@ -241,4 +234,6 @@ MCPI.socket.onopen = function(event) {
     MCPI.socket.onmessage = function(event) {
       var yaw = parseFloat(event.data.trim());
       MCPI.matrix = MCPI.yawMatrix(yaw);
+      clearTimeout(MCPI.timerID);
+
 
