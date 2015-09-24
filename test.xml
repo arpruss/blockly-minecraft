@@ -1,5 +1,5 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="controls_for" x="125" y="189">
+  <block type="controls_for" x="13" y="63">
     <field name="VAR">i</field>
     <value name="FROM">
       <block type="math_number">
@@ -65,5 +65,14 @@
         </next>
       </block>
     </statement>
+    <next>
+      <block type="minecraft_post_to_chat">
+        <value name="MESSAGE">
+          <block type="text">
+            <field name="TEXT">Spiral done!</field>
+          </block>
+        </value>
+      </block>
+    </next>
   </block>
 </xml>

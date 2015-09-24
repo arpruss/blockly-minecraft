@@ -23,46 +23,46 @@ handlers:
 # Storage API.
 - url: /storage
   script: storage.py
-  secure: always
+  secure: never
 - url: /storage\.js
   static_files: storage.js
   upload: storage\.js
-  secure: always
+  secure: never
 
 # Blockly files.
 - url: /static
   static_dir: static
-  secure: always
+  secure: never
 
 # Closure library for uncompiled Blockly.
 - url: /closure-library
   static_dir: closure-library
-  secure: always
+  secure: never
 
 # Redirect for root directory.
 - url: /
   script: index_redirect.py
-  secure: always
+  secure: never
 
 # Favicon.
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
-  secure: always
+  secure: never
   expiration: "30d"
 
 # Apple icon.
 - url: /apple-touch-icon\.png
   static_files: apple-touch-icon.png
   upload: apple-touch-icon\.png
-  secure: always
+  secure: never
   expiration: "30d"
 
 # robot.txt
 - url: /robots\.txt
   static_files: robots.txt
   upload: robots\.txt
-  secure: always
+  secure: never
 
 
 skip_files:
