@@ -33,10 +33,10 @@ Blockly.Python['minecraft_turtle_yaw'] = function(block) {
   var dropdown_direction = block.getFieldValue('DIRECTION');
   var value_angle = Blockly.Python.valueToCode(block, 'ANGLE', Blockly.Python.ORDER_ATOMIC);
   if (dropdown_direction == '1') {
-    var code = 'MCTURTLE.yaw('+value_angle+');\n';
+    var code = 'MCTURTLE.yaw('+value_angle+')\n';
   }
   else {
-    var code = 'MCTURTLE.yaw(-('+value_angle+'));\n';
+    var code = 'MCTURTLE.yaw(-('+value_angle+'))\n';
   }
   return code;
 };
@@ -46,10 +46,10 @@ Blockly.Python['minecraft_turtle_pitch'] = function(block) {
   var dropdown_direction = block.getFieldValue('DIRECTION');
   var value_angle = Blockly.Python.valueToCode(block, 'ANGLE', Blockly.Python.ORDER_ATOMIC);
   if (dropdown_direction == '1') {
-    var code = 'MCTURTLE.pitch('+value_angle+');\n';
+    var code = 'MCTURTLE.pitch('+value_angle+')\n';
   }
   else {
-    var code = 'MCTURTLE.pitch(-('+value_angle+'));\n';
+    var code = 'MCTURTLE.pitch(-('+value_angle+'))\n';
   }
   return code;
 };
@@ -59,10 +59,10 @@ Blockly.Python['minecraft_turtle_roll'] = function(block) {
   var dropdown_direction = block.getFieldValue('DIRECTION');
   var value_angle = Blockly.Python.valueToCode(block, 'ANGLE', Blockly.Python.ORDER_ATOMIC);
   if (dropdown_direction == '1') {
-    var code = 'MCTURTLE.roll('+value_angle+');\n';
+    var code = 'MCTURTLE.roll('+value_angle+')\n';
   }
   else {
-    var code = 'MCTURTLE.roll(-('+value_angle+'));\n';
+    var code = 'MCTURTLE.roll(-('+value_angle+'))\n';
   }
   return code;
 };
