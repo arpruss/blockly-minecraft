@@ -31,24 +31,42 @@ Blockly.JavaScript['minecraft_post_to_chat'] = function(block) {
 Blockly.JavaScript['minecraft_turtle_yaw'] = function(block) {
   Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
-  var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_MULTIPLICATION);
-  var code = 'MCPI.turtleYaw('+value_angle+'*'+dropdown_direction+');\n';
+  if (dropdown_direction == '1') {
+    var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'MCPI.turtleYaw('+value_angle+');\n';
+  }
+  else {
+    var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_UNARY_NEGATION);
+    var code = 'MCPI.turtleYaw(-'+value_angle+');\n';
+  }
   return code;
 };
 
 Blockly.JavaScript['minecraft_turtle_pitch'] = function(block) {
   Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
-  var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_MULTIPLICATION);
-  var code = 'MCPI.turtlePitch('+value_angle+'*'+dropdown_direction+');\n';
+  if (dropdown_direction == '1') {
+    var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'MCPI.turtlePitch('+value_angle+');\n';
+  }
+  else {
+    var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_UNARY_NEGATION);
+    var code = 'MCPI.turtlePitch(-'+value_angle+');\n';
+  }
   return code;
 };
 
 Blockly.JavaScript['minecraft_turtle_roll'] = function(block) {
   Blockly.JavaScript.minecraft();
   var dropdown_direction = block.getFieldValue('DIRECTION');
-  var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_MULTIPLICATION);
-  var code = 'MCPI.turtleRoll('+value_angle+'*'+dropdown_direction+');\n';
+  if (dropdown_direction == '1') {
+    var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = 'MCPI.turtleRoll('+value_angle+');\n';
+  }
+  else {
+    var value_angle = Blockly.JavaScript.valueToCode(block, 'ANGLE', Blockly.JavaScript.ORDER_UNARY_NEGATION);
+    var code = 'MCPI.turtleRoll(-'+value_angle+');\n';
+  }
   return code;
 };
 
