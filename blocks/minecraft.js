@@ -267,13 +267,24 @@ Blockly.Blocks['minecraft_turtle_roll'] = {
   }
 };
 
-Blockly.Blocks['minecraft_turtle_set_pen'] = {
+Blockly.Blocks['minecraft_turtle_pen_width'] = {
   init: function() {
     this.appendValueInput("WIDTH")
         .setCheck("Number")
         .appendField("Set pen width to");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(Blockly.Blocks.MinecraftHue);
+    this.setTooltip('');
+    this.setHelpUrl('github.com/arpruss/raspberryjammod');
+  }
+};
+
+Blockly.Blocks['minecraft_turtle_pen_block'] = {
+  init: function() {
     this.appendDummyInput()
-        .appendField("and block to");
+        .appendField("Set pen block to");
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown(Blockly.Blocks.MinecraftBlocks), "BLOCK");
     this.setInputsInline(true);

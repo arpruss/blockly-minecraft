@@ -67,11 +67,17 @@ Blockly.Python['minecraft_turtle_roll'] = function(block) {
   return code;
 };
 
-Blockly.Python['minecraft_turtle_set_pen'] = function(block) {
+Blockly.Python['minecraft_turtle_pen_width'] = function(block) {
   Blockly.Python.minecraft();
   var value_width = Blockly.Python.valueToCode(block, 'WIDTH', Blockly.Python.ORDER_ATOMIC);
+  var code = 'MCTURTLE.penwidth('+value_width+')\n';
+  return code;
+};
+
+Blockly.Python['minecraft_turtle_pen_block'] = function(block) {
+  Blockly.Python.minecraft();
   var dropdown_block = block.getFieldValue('BLOCK');
-  var code = 'MCTURTLE.penwidth('+value_width+')\n'+'MCTURTLE.setblock(Block('+dropdown_block+'))\n';
+  var code = 'MCTURTLE.setblock(Block('+dropdown_block+'))\n';
   return code;
 };
 

@@ -223,13 +223,13 @@ MCPI.timerID = setTimeout(MCPI.timeoutFunction, 5000);
 MCPI.socket.onopen = function(event) {
   MCPI.socket.onmessage = function(event) {
     var args = event.data.trim().split(",");
-    MCPI.playerX = parseFloat(args[0]);
-    MCPI.playerY = parseFloat(args[1]);
-    MCPI.playerZ = parseFloat(args[2]);
+    MCPI.playerX = Math.floor(parseFloat(args[0]));
+    MCPI.playerY = Math.floor(parseFloat(args[1]));
+    MCPI.playerZ = Math.floor(parseFloat(args[2]));
     MCPI.curX = MCPI.playerX;
     MCPI.curY = MCPI.playerY;
     MCPI.curZ = MCPI.playerZ;
-    MCPI.playerShiftedHeight = Math.floor(MCPI.playerY);
+    MCPI.playerShiftedHeight = MCPI.playerY;
 
     MCPI.socket.onmessage = function(event) {
       var yaw = parseFloat(event.data.trim());
