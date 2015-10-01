@@ -129,8 +129,9 @@ BlocklyStorage.handleRequest_ = function() {
       var data = BlocklyStorage.httpRequest_.responseText.trim();
       if (BlocklyStorage.httpRequest_.name == 'xml') {
         window.location.hash = data;
-        BlocklyStorage.alert(BlocklyStorage.LINK_ALERT.replace('%1',
-            window.location.href));
+
+        prompt(BlocklyStorage.LINK_ALERT,window.location.href);
+
       } else if (BlocklyStorage.httpRequest_.name == 'key') {
         if (!data.length) {
           BlocklyStorage.alert(BlocklyStorage.HASH_ERROR.replace('%1',

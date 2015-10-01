@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "List",
   textVariable: "Text",
   httpRequestError: "Mit der Oonfroch hots en Problem geb.",
-  linkAlert: "Tel von dein Bausten mit dem Link:\n\n%1",
+  linkAlert: "Tel von dein Bausten mit dem Link:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "„%1“ stimmt leider mit kenem üweren gespeicherte Programm.",
   xmlError: "Dein gespeicherte Datei könnt net gelood sin. Vielleicht woard se mit ener annre Version von Blockly erstellt.",
   badXml: "Fehler beim Parse von XML:\n%1\n\nWähle 'OK' zum Verwerfe von deiner Ändrunge orrer 'Abbreche' zum XML weiter beoorbeite."

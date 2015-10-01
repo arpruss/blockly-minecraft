@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "liste",
   textVariable: "texte",
   httpRequestError: "Il y a eu un problème avec la demande.",
-  linkAlert: "Partagez vos blocs grâce à ce lien:\n\n%1",
+  linkAlert: "Partagez vos blocs grâce à ce lien:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "Désolé, '%1' ne correspond à aucun programme sauvegardé.",
   xmlError: "Impossible de charger le fichier de sauvegarde.  Peut être a t-il été créé avec une autre version de Blockly?",
   badXml: "Erreur d’analyse du XML :\n%1\n\nSélectionner 'OK' pour abandonner vos modifications ou 'Annuler' pour continuer à modifier le XML."

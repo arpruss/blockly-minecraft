@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "senarai",
   textVariable: "teks",
   httpRequestError: "Permintaan itu terdapat masalah.",
-  linkAlert: "Kongsikan blok-blok anda dengan pautan ini:\n\n%1",
+  linkAlert: "Kongsikan blok-blok anda dengan pautan ini:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "Maaf, '%1' tidak berpadanan dengan sebarang aturcara yang disimpan.",
   xmlError: "Fail simpanan anda tidak dapat dimuatkan. Jangan-jangan ia dicipta dengan versi Blockly yang berlainan?",
   badXml: "Ralat ketika menghuraian XML:\n%1\n\nPilih 'OK' untuk melucutkan suntingan anda atau 'Batal' untuk bersambung menyunting XML-nya."

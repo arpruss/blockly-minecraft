@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "Liste",
   textVariable: "Text",
   httpRequestError: "Mit der Anfrage gab es ein Problem.",
-  linkAlert: "Teile deine Bausteine mit diesem Link:\n\n%1",
+  linkAlert: "Teile deine Bausteine mit diesem Link:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "„%1“ stimmt leider mit keinem gespeicherten Programm überein.",
   xmlError: "Deine gespeicherte Datei konnte nicht geladen werden. Vielleicht wurde sie mit einer anderen Version von Blockly erstellt.",
   badXml: "Fehler beim Parsen von XML:\n%1\n\nWähle 'OK' zum Verwerfen deiner Änderungen oder 'Abbrechen' zum weiteren Bearbeiten des XML."

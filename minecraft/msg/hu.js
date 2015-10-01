@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "lista",
   textVariable: "szöveg",
   httpRequestError: "A kéréssel kapcsolatban probléma merült fel.",
-  linkAlert: "Ezzel a hivatkozással tudod megosztani a programodat:\n\n%1",
+  linkAlert: "Ezzel a hivatkozással tudod megosztani a programodat:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "Sajnos a '%1' hivatkozás nem tartozik egyetlen programhoz sem.",
   xmlError: "A programodat nem lehet betölteni.  Elképzelhető, hogy a Blockly egy másik verziójában készült?",
   badXml: "Hiba az XML feldolgozásakor:\n%1\n\nVáltozások elvetése?"

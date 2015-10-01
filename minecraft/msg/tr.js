@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "liste",
   textVariable: "metin",
   httpRequestError: "İstek ile ilgili bir problem var.",
-  linkAlert: "Bloklarını bu bağlantı ile paylaş:\n\n%1",
+  linkAlert: "Bloklarını bu bağlantı ile paylaş:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "Üzgünüz, '%1' hiç bir kaydedilmiş program ile uyuşmuyor.",
   xmlError: "Kaydedilen dosyanız yüklenemiyor\nBlockly'nin önceki sürümü ile kaydedilmiş olabilir mi?",
   badXml: "XML ayrıştırma hatası:\n%1\n\nDeğişikliklerden vazgeçmek için 'Tamam'ı, düzenlemeye devam etmek için 'İptal' seçeneğini seçiniz."

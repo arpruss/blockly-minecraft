@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "seznam",
   textVariable: "text",
   httpRequestError: "Došlo k potížím s požadavkem.",
-  linkAlert: "Sdílej bloky tímto odkazem: \n\n%1",
+  linkAlert: "Sdílej bloky tímto odkazem: \n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "Omlouváme se, '%1' nesouhlasí s žádným z uložených souborů.",
   xmlError: "Nepodařilo se uložit vás soubor.  Pravděpodobně byl vytvořen jinou verzí Blockly?",
   badXml: "Chyba parsování XML:\n%1\n\nVybrat \"OK\" pro zahození vašich změn nebo 'Cancel' k dalšímu upravování XML."

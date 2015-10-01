@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "lista",
   textVariable: "text",
   httpRequestError: "Det uppstod ett problem med begäran.",
-  linkAlert: "Dela dina block med denna länk: \n\n%1",
+  linkAlert: "Dela dina block med denna länk: \n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "Tyvärr, '%1' överensstämmer inte med något sparat program.",
   xmlError: "Kunde inte läsa din sparade fil. Den skapades kanske med en annan version av Blockly?",
   badXml: "Fel vid parsning av XML:\n%1\n\nKlicka på 'OK' för att strunta i dina ändringar eller 'Avbryt' för att fortsätta redigera XML-koden."

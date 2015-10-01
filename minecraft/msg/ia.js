@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "lista",
   textVariable: "texto",
   httpRequestError: "Il habeva un problema con le requesta.",
-  linkAlert: "Divide tu blocos con iste ligamine:\n\n%1",
+  linkAlert: "Divide tu blocos con iste ligamine:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "Infelicemente, '%1' non corresponde a alcun programma salveguardate.",
   xmlError: "Impossibile cargar le file salveguardate. Pote esser que illo ha essite create con un altere version de Blockly?",
   badXml: "Error de analyse del XML:\n%1\n\nSelige 'OK' pro abandonar le modificationes o 'Cancellar' pro continuar a modificar le codice XML."

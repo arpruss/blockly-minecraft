@@ -19,7 +19,7 @@ var MSG = {
   listVariable: "リスト",
   textVariable: "テキスト",
   httpRequestError: "ネットワーク接続のエラーです。",
-  linkAlert: "ブロックの状態をこのリンクで共有できます:\n\n%1",
+  linkAlert: "ブロックの状態をこのリンクで共有できます:\n\n(Ctrl-C or Cmd-C to copy link)",
   hashError: "すみません。「%1」という名前のプログラムは保存されていません。",
   xmlError: "保存されたファイルを読み込めませんでした。別のバージョンのブロックリーで作成された可能性があります。",
   badXml: "XML のエラーです:\n%1\n\nXML の変更をやめるには「OK」、編集を続けるには「キャンセル」を選んでください。"
