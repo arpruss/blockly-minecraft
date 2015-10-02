@@ -2,7 +2,6 @@ Blockly.Blocks.MinecraftHue = 20;
 Blockly.Blocks.MinecraftBlocks = [
 ["air","0"],
 ["bed","26"],
-["bedrock invisible","95"],
 ["bedrock","7"],
 ["bookshelf","47"],
 ["brick block","45"],
@@ -77,14 +76,10 @@ Blockly.Blocks.MinecraftBlocks = [
 ["large fern","175,3"],
 ["lava flowing","10"],
 ["lava stationary","11"],
-["leaves birch decayable","18,2"],
-["leaves birch permanent","18,6"],
-["leaves jungle decayable","18,3"],
-["leaves jungle permanent","18,7"],
-["leaves oak decayable","18"],
-["leaves oak permanent","18,4"],
-["leaves spruce decayable","18,1"],
-["leaves spruce permanent","18,5"],
+["leaves birch","18,6"],
+["leaves jungle","18,7"],
+["leaves oak","18,4"],
+["leaves spruce","18,5"],
 ["leaves","18"],
 ["lilac","175,1"],
 ["melon","103"],
@@ -174,7 +169,7 @@ Blockly.Blocks['minecraft_set_block'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue) ;
-    this.setTooltip('');
+    this.setTooltip('Put a block at coordinates measured from player position.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -188,7 +183,7 @@ Blockly.Blocks['minecraft_turtle_go'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip('Move turtle forward drawing.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -202,7 +197,7 @@ Blockly.Blocks['minecraft_post_to_chat'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip('Post message to chat.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -222,7 +217,7 @@ Blockly.Blocks['minecraft_turtle_yaw'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip('Rotate turtle left or right.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -242,7 +237,7 @@ Blockly.Blocks['minecraft_turtle_pitch'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip('Rotate turtle up or down.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -262,7 +257,7 @@ Blockly.Blocks['minecraft_turtle_roll'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip('Tilt turtle from side to side.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -276,7 +271,7 @@ Blockly.Blocks['minecraft_turtle_pen_width'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip("Set the width of the line the turtle will make.");
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -291,7 +286,7 @@ Blockly.Blocks['minecraft_turtle_pen_block'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip('Set the block the turtle will draw with.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
@@ -306,7 +301,7 @@ Blockly.Blocks['minecraft_turtle_pen'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.MinecraftHue);
-    this.setTooltip('');
+    this.setTooltip('Turtle draws only when its pen is down.');
     this.setHelpUrl('github.com/arpruss/raspberryjammod');
   }
 };
