@@ -1,77 +1,51 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="controls_for" x="13" y="63">
-    <field name="VAR">i</field>
-    <value name="FROM">
-      <block type="math_number">
-        <field name="NUM">1</field>
-      </block>
-    </value>
-    <value name="TO">
-      <block type="math_number">
-        <field name="NUM">60</field>
-      </block>
-    </value>
-    <value name="BY">
-      <block type="math_number">
-        <field name="NUM">0.5</field>
-      </block>
-    </value>
-    <statement name="DO">
-      <block type="minecraft_turtle_set_pen">
-        <field name="BLOCK">95,2</field>
+  <block type="minecraft_turtle_pen_block" x="37" y="13">
+    <field name="BLOCK">41</field>
+    <next>
+      <block type="minecraft_turtle_pen_width">
         <value name="WIDTH">
-          <block type="math_arithmetic">
-            <field name="OP">DIVIDE</field>
-            <value name="A">
-              <block type="math_arithmetic">
-                <field name="OP">MINUS</field>
-                <value name="A">
-                  <block type="math_number">
-                    <field name="NUM">80</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="variables_get">
-                    <field name="VAR">i</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <value name="B">
-              <block type="math_number">
-                <field name="NUM">20</field>
-              </block>
-            </value>
+          <block type="math_number">
+            <field name="NUM">2</field>
           </block>
         </value>
         <next>
-          <block type="minecraft_turtle_go">
-            <value name="DISTANCE">
+          <block type="controls_repeat_ext">
+            <value name="TIMES">
               <block type="math_number">
-                <field name="NUM">5</field>
+                <field name="NUM">30</field>
               </block>
             </value>
-            <next>
+            <statement name="DO">
               <block type="minecraft_turtle_yaw">
                 <field name="DIRECTION">-1</field>
                 <value name="ANGLE">
-                  <block type="variables_get">
-                    <field name="VAR">i</field>
+                  <block type="math_number">
+                    <field name="NUM">10</field>
                   </block>
                 </value>
+                <next>
+                  <block type="minecraft_turtle_go">
+                    <value name="DISTANCE">
+                      <block type="math_number">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="minecraft_turtle_pitch">
+                        <field name="DIRECTION">1</field>
+                        <value name="ANGLE">
+                          <block type="math_number">
+                            <field name="NUM">5</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
               </block>
-            </next>
+            </statement>
           </block>
         </next>
-      </block>
-    </statement>
-    <next>
-      <block type="minecraft_post_to_chat">
-        <value name="MESSAGE">
-          <block type="text">
-            <field name="TEXT">Spiral done!</field>
-          </block>
-        </value>
       </block>
     </next>
   </block>

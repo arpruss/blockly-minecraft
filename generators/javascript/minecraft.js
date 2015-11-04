@@ -211,7 +211,7 @@ Blockly.JavaScript.minecraft = function() {
 "    MCPI.curZ = newZ;\n"+
 "};\n"+
 "\n"+
-"MCPI.socket = new WebSocket(\"ws://127.0.0.1:14711\");\n"+
+"MCPI.socket = new WebSocket(\"ws://\" + (location.search.length ? location.search.substr(1) : \"127.0.0.1\") + \":14711\");\n"+
 "\n"+
 "MCPI.timeoutFunction = function() {\n"+
 "   MCPI.socket.close();\n"+

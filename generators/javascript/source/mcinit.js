@@ -210,7 +210,7 @@ MCPI.turtleGo = function(distance) {
     MCPI.curZ = newZ;
 };
 
-MCPI.socket = new WebSocket("ws://127.0.0.1:14711");
+MCPI.socket = new WebSocket("ws://" + (location.search.length ? location.search.substr(1) : "127.0.0.1") + ":14711");
 
 MCPI.timeoutFunction = function() {
    MCPI.socket.close();
